@@ -65,6 +65,9 @@
 	<script type="text/javascript">
 		var userDatabase = firebase.firestore().collection('users');
 		var taskDatabase = firebase.firestore().collection('tasks');
+		$('input').click(function () {
+    		$('#alert-box').hide();
+		});
 		function validateEmail(email) {
 			const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 			return re.test(email);
@@ -73,7 +76,6 @@
 			$('#alert-box').text(message);
 			$('#alert-box').show();
 		}
-
 		function signIn() {
 			var email = $("#email-input").val().toLowerCase();
 			var password = $("#password-input").val();
