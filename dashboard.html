@@ -523,7 +523,7 @@
                             });
                         }
                     } else {
-                        $("#completed-tasks").html('<div class="h6 font-weight-bold text-gray-500">You have not completed any Tasks. Comeon Claim a Task and Do it!</div>');
+                        $("#completed-tasks").html('<div class="h6 font-weight-bold text-gray-500">You have not completed any Tasks. There a lot of tasks in the <a href="tasks.html">Tasks Page</a>. Comeon Claim a Task and Do it!</div>');
                     }
                 }).catch(function (error) {
                     console.log("Error", error);
@@ -538,7 +538,7 @@
             hour = minute * 60,
             day = hour * 24;
 
-        let countDown = new Date('Jul 30, 2020 00:00:00').getTime(),
+        let countDown = new Date('Jul 30, 2022 00:00:00').getTime(),
             x = setInterval(function () {
 
                 let now = new Date().getTime(),
