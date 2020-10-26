@@ -1,3 +1,0 @@
-RewriteEngine On
-RewriteCond %{THE_REQUEST} \.html
-RewriteRule ^(.*)\.html$ /$1 [R=301,L]
