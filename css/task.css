@@ -1,0 +1,58 @@
+.tip {
+	width: 0px;
+	height: 0px;
+	position: absolute;
+	background: transparent;
+	border: 10px solid #202020;
+}
+
+.tip-left {
+	top: 10px;
+	left: -25px;
+	border-top-color: transparent;
+	border-left-color: transparent;
+	border-bottom-color: transparent;
+}
+
+.dialogbox .body {
+	position: relative;
+	height: auto;
+	margin: 5px 15px 10px;
+	padding: 5px;
+	background-color: #181818;
+	border-radius: 3px;
+	border: 5px solid #202020;
+}
+
+.dialogbox .body .message {
+	border-radius: 3px;
+	font-family: Arial;
+	font-size: 14px;
+	line-height: 1.5;
+	color: #a0a0a0;
+}
+
+#new-message {
+	background-color: #3a3a3a;
+	color: #d6d6d6;
+}
+
+.user {
+	color: #d1d1d1;
+}
+
+.time {
+	color: rgb(114, 121, 128);
+}
+
+#all-msg-btn {
+  color: #e0e0e0;
+  font-size: large;
+  cursor: pointer;
+  width: fit-content;
+  padding: 10px;
+}
+
+#all-msg-btn:hover {
+  background-color: #3a3a3a;
+}
