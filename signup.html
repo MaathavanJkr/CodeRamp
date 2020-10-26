@@ -55,7 +55,7 @@
 				</div>
 				<div class="card-footer">
 					<div class="d-flex justify-content-center links">
-						Already have an account?<a href="login.html">Log In</a>
+						Already have an account?<a href="login">Log In</a>
 					</div>
 				</div>
 			</div>
@@ -170,7 +170,7 @@
 								approved: false,
 								proof: downloadURL
 							}).then(function () {
-								$('#signup-body').html('Thank you for registering. We will send you a mail after reviewing your request. Then you can login through our site.</br></br><a href="index.html" class="btn btn-primary">Back to Home page</a>')
+								$('#signup-body').html('Thank you for registering. We will send you a mail after reviewing your request. Then you can login through our site.</br></br><a href="index" class="btn btn-primary">Back to Home page</a>')
 							});
 						});
 					});
@@ -180,7 +180,7 @@
 		window.onload = function () {
 			firebase.auth().onAuthStateChanged(function (user) {
 				if (user) {
-					location.replace('dashboard.html')
+					location.replace('dashboard')
 				}
 			});
 		};
