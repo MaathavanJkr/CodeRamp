@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Review Task - CodeRamp'20</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="keywords" content="CodeRamp, Code Ramp, CodeRamp'20, JHC, JHC Contest">
+
+    <!-- Custom fonts for this template-->
+    <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="../css/dashboard.css" rel="stylesheet">
+    <link href="../css/task.css" rel="stylesheet">
+
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-storage.js"></script>
+    <script type="text/javascript" src="../js/config.js"></script>
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <div class="navbar-header">
+                    <img class="brand" src="../img/brand.png" width="100px" />
+                </div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="dashboard.html">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="addtask.html">
+                    <i class="fas fa-fw fa-clipboard-list"></i>
+                    <span>Create Task</span></a>
+            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Charts -->
+            <li class="nav-item">
+                <a class="nav-link" href="requests.html">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>User Requests</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+            <!-- Nav Item - Tables -->
+            <li class="nav-item">
+                <a class="nav-link" href="contact.html">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Contact Us</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand topbar mb-4 static-top shadow">
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fas fa-bars text-gray-500"></i>
+                    </button>
+
+                    <!-- Topbar Search -->
+                    <form
+                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        <div class="input-group">
+                            <input type="text" class="form-control bg-gray border-0 small" placeholder="Search for..."
+                                aria-label="Search" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+
+                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        <li class="nav-item dropdown no-arrow d-sm-none">
+                            <a class="nav-link dropdown-toggle" href="../#" id="searchDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-search fa-fw text-gray-300"></i>
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                aria-labelledby="searchDropdown">
+                                <form class="form-inline mr-auto w-100 navbar-search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-light border-0 small"
+                                            placeholder="Search for..." aria-label="Search"
+                                            aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="fas fa-search fa-sm text-gray-300"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+
+                        <!-- Nav Item - Alerts -->
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="../#" id="alertsDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-bell fa-fw text-gray-300"></i>
+                                <!-- Counter - Alerts -->
+                                <span class="badge badge-danger badge-counter">3+</span>
+                            </a>
+                            <!-- Dropdown - Alerts -->
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="alertsDropdown">
+                                <h6 class="dropdown-header">
+                                    Alerts
+                                </h6>
+                                <a class="dropdown-item d-flex align-items-center" href="../#">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-primary">
+                                            <i class="fas fa-file-alt text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-gray-700">December 12, 2019</div>
+                                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="../#">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-success">
+                                            <i class="fas fa-donate text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-gray-700">December 7, 2019</div>
+                                        $290.29 has been deposited into your account!
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="../#">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-warning">
+                                            <i class="fas fa-exclamation-triangle text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-gray-700">December 2, 2019</div>
+                                        Spending Alert: We've noticed unusually high spending for your account.
+                                    </div>
+                                </a>
+                                <a class="dropdown-item text-center small text-gray-700" href="../#">Show All Alerts</a>
+                            </div>
+                        </li>
+
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="../#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span id="adminName" class="mr-2 d-none d-md-inline text-gray-300 small"></span>
+                                <i class="fas fa-user text-white"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="../#">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-800"></i> Profile
+                                </a>
+                                <a class="dropdown-item" href="../#">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-800"></i> Settings
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="../#" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-800"></i> Logout
+                                </a>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </nav>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div id="task" style="display: none;">
+                    <div class="container px-4">
+                        <!-- Page Heading -->
+                        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                            <h1 class="h3 mb-0 text-gray-200">Review Task</h1>
+                        </div>
+                        <div class="card text-gray-300 bg-dark">
+                            <div class="row pt-2 pl-4 pr-2">
+                                <div class="card-body col-lg-9">
+                                    <h3 id="task-title" class="card-title task-title"></h3>
+                                    <hr class="heading-hr">
+                                    <div id="task-content" class="card-text my-5"></div>
+                                    <h5>
+                                        Task Tags:
+                                        <div id="task-tags" class="tags grey">
+                                        </div>
+                                    </h5>
+                                </div>
+                                <div class="col-lg-3 py-3">
+                                    <div id="task-btn-section">
+                                        <h4><span id="claim-btn" class="badge badge-danger text-light">Not Claimed This
+                                                Task</span></h4>
+                                    </div>
+                                    </br>
+                                    <div>
+                                        Task Type:
+                                        <h4 id="task-type"></h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </br>
+                        <div id="msg-section" class="row" style="display: none;">
+                            <div class="col-xl-4 col-lg-3">
+                                <div class="card shadow mb-4">
+                                    <div class="card-body">
+                                        <div id="completed-tasks" class="list-group">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-8 col-lg-9">
+                                <div class="card shadow mb-4">
+                                    <div class="card-body">
+                                        <div id="messages">
+                                        </div>
+                                        <div class="form-group px-3">
+                                            <div id="upload-progress-section" style="display: none;">
+                                                <div class="text-center">Uploading wait...</div>
+                                                <div class="progress mb-2">
+                                                    <div id="upload-progress"
+                                                        class="progress-bar progress-bar-striped progress-bar-animated"
+                                                        role="progressbar" style="width: 0%"></div>
+                                                </div>
+                                            </div>
+                                            <textarea class="form-control mb-2" id="new-message" rows="2"
+                                                placeholder="Type your message here.."></textarea>
+                                            <input type="file" id="file" name="files[]" />
+                                            <button class="btn btn-primary float-right" id="send-message-btn">Send
+                                                Message</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-dark mt-4">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; JHCICT 2020, All Rights Reserved</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="../#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button id="logout" onclick="firebase.auth().signOut();" class="btn btn-primary">Logout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        document.getElementById('file').onchange = function () {
+            $('#new-message').attr('placeholder', 'Tell us about this file.');
+        };
+        var url = new URL(window.location.href);
+        var taskId = url.searchParams.get("task");
+        var userId = url.searchParams.get("user");
+        var userDatabase = firebase.firestore().collection('users');
+        var taskDatabase = firebase.firestore().collection('tasks');
+        var adminDatabase = firebase.firestore().collection('admin');
+
+        taskDatabase.doc(taskId).get().then(function (doc) {
+            if (doc.exists) {
+                var style, level;
+                switch (doc.data()['level']) {
+                    case "1":
+                        style = "primary";
+                        level = "Beginner";
+                        break;
+                    case "2":
+                        style = "warning";
+                        level = "Intermediate";
+                        break;
+                    case "3":
+                        style = "danger";
+                        level = "Advanced"
+                        break;
+                }
+                $("#task-title").html(doc.data()['title'] + ' <span class="badge badge-pill badge-' + style + '">' + level + '</span>');
+                $("title").html(doc.data()['title'] + ' - CodeRamp\'20');
+                $("#task-content").html(doc.data()['content']);
+                var types = '';
+                for (var i = 0; i < doc.data()['type'].length; i++) {
+                    types += '<span class="badge badge-light">' + doc.data()['type'][i] + '</span>\n';
+                }
+                $("#task-type").html(types);
+                var tags = '';
+                for (var i = 0; i < doc.data()['tags'].length; i++) {
+                    tags += '<span class="badge badge-info">' + doc.data()['tags'][i] + '</span>\n';
+                }
+                $("#task-tags").html(tags);
+                for (var i = 0; i < doc.data()['tags'].length; i++) {
+                    tags += '<span class="badge badge-info">' + doc.data()['tags'][i] + '</span>\n';
+                }
+
+                $("#task").show();
+            } else {
+                alert("No such Task.");
+                location.replace('tasks.html')
+            }
+        })
+    </script>
+    <script type="text/javascript">
+        var adminName;
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+                // User is signed in.
+                adminName = user.displayName;
+                $('#adminName').html(adminName);
+                userDatabase.doc(userId).get().then(function (doc) {
+                    if (doc.exists) {
+                        if (doc.data()['claimed'] == taskId) {
+                            adminDatabase.doc('review').get().then(function (doc) {
+                                if (doc.exists) {
+                                    var requests = doc.data()['requests'];
+                                    var reqIndex = requests.findIndex(x => x.user === userId);
+                                    if (reqIndex !== -1) {
+                                        $('#task-btn-section').html('<button id="more-work-btn" class="btn btn-warning text-light mb-2">More Work Needed</button></br><button id="approve-btn" class="btn btn-success text-light">Approve this Task</button>');
+                                        $('#approve-btn').click(function () {
+                                            userDatabase.doc(userId).get().then(function (doc) {
+                                                var completed = doc.data()['completed'] || [];
+                                                completed.push(taskId);
+                                                var alerts = doc.data()['alerts'];
+                                                alerts.push({ task: $("#task-title").text(),taskId: taskId, type: 'success', timestamp: new Date().toString().substring(4, 21) });
+                                                var alertCount = doc.data()['alertCount'] + 1;
+                                                userDatabase.doc(userId).update({
+                                                    claimed: 'no',
+                                                    completed: completed,
+                                                    alerts: alerts,
+                                                    alertCount: alertCount
+                                                }).then(function () {
+                                                    adminDatabase.doc('review').get().then(function (doc) {
+                                                        if (doc.exists) {
+                                                            var requests = doc.data()['requests'];
+                                                            var reqIndex = requests.findIndex(x => x.user === userId);
+                                                            requests.splice(reqIndex, 1)
+                                                            adminDatabase.doc('review').update({
+                                                                requests: requests
+                                                            }).then(function () {
+                                                                adminDatabase.doc('stats').get().then(function (doc) {
+                                                                    var count = doc.data()['completed'] + 1;
+                                                                    adminDatabase.doc('stats').update({
+                                                                        completed: count
+                                                                    })
+                                                                });
+                                                                userDatabase.doc(userId).collection('tasks').doc(taskId).get().then(function (doc) {
+                                                                    var msgData = doc.data()['msges'];
+                                                                    msgData.push({ msg: 'Task Approved', sender: adminName, timestamp: new Date().toString().substring(4, 21) });
+                                                                    userDatabase.doc(userId).collection('tasks').doc(taskId).update({
+                                                                        msges: msgData
+                                                                    }).then(function () {
+                                                                        location.reload();
+                                                                    });
+                                                                });
+                                                            });
+                                                        }
+                                                    });
+                                                });
+                                            });
+                                        });
+                                        $('#more-work-btn').click(function () {
+                                            adminDatabase.doc('review').get().then(function (doc) {
+                                                if (doc.exists) {
+                                                    var requests = doc.data()['requests'];
+                                                    var reqIndex = requests.findIndex(x => x.user === userId);
+                                                    requests.splice(reqIndex, 1)
+                                                    adminDatabase.doc('review').update({
+                                                        requests: requests
+                                                    }).then(function () {
+                                                        userDatabase.doc(userId).get().then(function (doc) {
+                                                            var alerts = doc.data()['alerts'];
+                                                            alerts.push({ task: $("#task-title").text(),taskId: taskId, type: 'warning', timestamp: new Date().toString().substring(4, 21) });
+                                                            var alertCount = doc.data()['alertCount'] + 1;
+                                                            userDatabase.doc(userId).update({
+                                                                alerts: alerts,
+                                                                alertCount: alertCount
+                                                            });
+                                                        });
+                                                            userDatabase.doc(userId).collection('tasks').doc(taskId).get().then(function (doc) {
+                                                                var msgData = doc.data()['msges'];
+                                                                msgData.push({ msg: 'More Work Needed', sender: adminName, timestamp: new Date().toString().substring(4, 21) });
+                                                                userDatabase.doc(userId).collection('tasks').doc(taskId).update({
+                                                                    msges: msgData
+                                                                }).then(function () {
+                                                                    location.reload();
+                                                                });
+                                                            });
+                                                        });
+                                                    }
+                                            });
+                                        });
+                                    } else {
+                                        $('#task-btn-section').html('<h4><span class="badge badge-info">On Progress</span></h4>');
+                                    }
+                                }
+                            });
+                        } else if (doc.data()['completed']) {
+                            if (doc.data()['completed'].indexOf(taskId) !== -1) {
+                                $('#task-btn-section').html('<h4><span class="badge badge-success">Task Completed</span></h4>');
+                            } else if (doc.data()['claimed'] !== "no") {
+                                $('#task-btn-section').html('<h4><span class="badge badge-danger">Claimed Another Task</span></h4>');
+                            }
+                        } else if (doc.data()['claimed'] !== "no" && doc.data()['claimed'] !== undefined) {
+                            $('#task-btn-section').html('<h4><span class="badge badge-danger">Claimed Another Task</span></h4>');
+                        }
+
+                        userDatabase.doc(userId).collection('tasks').doc(taskId).get().then(function (doc) {
+                            if (doc.exists) {
+                                $('#msg-section').show();
+                                for (var i = 0; i < doc.data()['msges'].length; i++) {
+                                    $('#messages').append('<div class="dialogbox"><div class="body"><span class="tip tip-left"></span><div class="user">' + doc.data()['msges'][i]['sender'] + ' <small class="time">' + doc.data()['msges'][i]['timestamp'] + '</small></div><div class="message"><span>' + doc.data()['msges'][i]['msg'] + '</span></div></div></div>');
+                                }
+                                $('#send-message-btn').click(function () {
+
+                                    var file = document.getElementById('file').files[0];
+                                    if (file) {
+                                        $('#upload-progress-section').show();
+                                        var storageRef = firebase.storage().ref();
+                                        // Upload file and metadata to the object 'images/mountains.jpg'
+                                        var uploadTask = storageRef.child('tasks/' + taskId + '/' + adminName + '/' + file.name).put(file);
+                                        // Listen for state changes, errors, and completion of the upload.
+                                        uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
+                                            function (snapshot) {
+                                                // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+                                                var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                                                $()
+                                                console.log('Upload is ' + progress + '% done');
+                                                document.getElementById("upload-progress").style.width = progress + '%';
+                                                switch (snapshot.state) {
+                                                    case firebase.storage.TaskState.PAUSED: // or 'paused'
+                                                        console.log('Upload is paused');
+                                                        break;
+                                                    case firebase.storage.TaskState.RUNNING: // or 'running'
+                                                        console.log('Upload is running');
+                                                        break;
+                                                }
+                                            }, function (error) {
+
+                                                // A full list of error codes is available at
+                                                // https://firebase.google.com/docs/storage/web/handle-errors
+                                                switch (error.code) {
+                                                    case 'storage/unauthorized':
+                                                        // User doesn't have permission to access the object
+                                                        break;
+
+                                                    case 'storage/canceled':
+                                                        // User canceled the upload
+                                                        break;
+
+                                                    case 'storage/unknown':
+                                                        // Unknown error occurred, inspect error.serverResponse
+                                                        break;
+                                                }
+                                            }, function () {
+                                                // Upload completed successfully, now we can get the download URL
+                                                uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+                                                    console.log('File available at', downloadURL);
+                                                    var msgData = doc.data()['msges'];
+                                                    var msg = $('#new-message').val() + '<br> <b>Attached</b>: <a href="../' + downloadURL + '">' + file.name + '</a>';
+                                                    msgData.push({ msg: msg, sender: adminName, timestamp: new Date().toString().substring(4, 21) });
+                                                    userDatabase.doc(userId).collection('tasks').doc(taskId).update({
+                                                        msges: msgData
+                                                    }).then(function () {
+                                                        location.reload();
+                                                    });
+                                                });
+                                            });
+                                    } else {
+                                        var msgData = doc.data()['msges'];
+                                        msgData.push({ msg: $('#new-message').val(), sender: adminName, timestamp: new Date().toString().substring(4, 21) });
+                                        userDatabase.doc(userId).collection('tasks').doc(taskId).update({
+                                            msges: msgData
+                                        }).then(function () {
+                                            location.reload();
+                                        });
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            } else {
+                location.replace('login.html');
+            }
+        });
+    </script>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="../js/dashboard.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Tasks - CodeRamp'20</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="keywords" content="CodeRamp, Code Ramp, CodeRamp'20, JHC, JHC Contest">
+
+    <link rel="icon" href="avataaars.png" type="image/png">
+
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="css/dashboard.css" rel="stylesheet">
+    <link href="css/tasks.css" rel="stylesheet">
+
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-firestore.js"></script>
+    <script type="text/javascript" src="js/config.js"></script>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="vendor/simulate/libs/bililiteRange.js"></script>
+    <script type="text/javascript" src="vendor/simulate/libs/jquery.simulate.js"></script>
+    <script type="text/javascript" src="vendor/simulate/src/jquery.simulate.ext.js"></script>
+    <script type="text/javascript" src="vendor/simulate/src/jquery.simulate.key-sequence.js"></script>
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <div class="navbar-header">
+                    <img class="brand" src="img/brand.png" width="100px" />
+                </div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="dashboard.html">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="tasks.html">
+                    <i class="fas fa-fw fa-clipboard-list"></i>
+                    <span>Tasks</span></a>
+            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Charts -->
+            <li class="nav-item">
+                <a class="nav-link" href="rank.html">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Rank</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+            <!-- Nav Item - Tables -->
+            <li class="nav-item">
+                <a class="nav-link" href="contact.html">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Contact Us</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand topbar mb-4 static-top shadow">
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fas fa-bars text-gray-500"></i>
+                    </button>
+
+                    <!-- Topbar Search -->
+                    <form
+                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        <div class="input-group">
+                            <input type="text" class="form-control bg-gray border-0 small text-gray-400 search"
+                                placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+
+                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        <li class="nav-item dropdown no-arrow d-sm-none">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-search fa-fw text-gray-300"></i>
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                aria-labelledby="searchDropdown">
+                                <form class="form-inline mr-auto w-100 navbar-search">
+                                    <div class="input-group">
+                                        <input id="search" type="text"
+                                            class="form-control bg-light border-0 small search"
+                                            placeholder="Search for..." aria-label="Search"
+                                            aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="fas fa-search fa-sm text-gray-300"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+
+                        <!-- Nav Item - Alerts -->
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-bell fa-fw text-gray-300"></i>
+                                <!-- Counter - Alerts -->
+                                <span id="alert-count" class="badge badge-danger badge-counter"></span>
+                            </a>
+                            <!-- Dropdown - Alerts -->
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="alertsDropdown">
+                                <h6 class="dropdown-header">
+                                    Alerts
+                                </h6>
+                                <div id="alerts">
+                                </div>
+                                <a class="dropdown-item text-center small text-gray-700" href="#">Show All Alerts</a>
+                            </div>
+                        </li>
+
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span id="username" class="mr-2 d-none d-md-inline text-gray-300 small"></span>
+                                <i class="fas fa-user text-white"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-800"></i> Profile
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-800"></i> Settings
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-800"></i> Logout
+                                </a>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </nav>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-200">Tasks</h1>
+                    </div>
+
+                    <ul id="task-list" class="list fake-ul pb-2">
+                    </ul>
+
+                    <nav class="d-flex justify-content-center">
+                        <ul class="pagination">
+                        </ul>
+                    </nav>
+                </div>
+                <!-- End of Main Content -->
+
+                <!-- Footer -->
+                <footer class="sticky-footer bg-dark mt-4">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>Copyright &copy; JHCICT 2020, All Rights Reserved</span>
+                        </div>
+                    </div>
+                </footer>
+                <!-- End of Footer -->
+
+            </div>
+            <!-- End of Content Wrapper -->
+
+        </div>
+        <!-- End of Page Wrapper -->
+
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
+
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <button id="logout" onclick="firebase.auth().signOut(); location.reload();"
+                            class="btn btn-primary">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            var url = new URL(window.location.href);
+            var searchText = url.searchParams.get("search");
+            var userDatabase = firebase.firestore().collection('users');
+            var taskDatabase = firebase.firestore().collection('tasks');
+            firebase.auth().onAuthStateChanged(function (user) {
+                if (user) {
+                    // User is signed in.
+                    var username = user.displayName;
+                    var docUsername = username.toLowerCase();
+                    $('#username').html(username);
+                    var completed = [];
+                    var claimedTask = '';
+                    userDatabase.doc(docUsername).get().then(function (doc) {
+                        if (doc.data()['alerts']) {
+                            var alerts = doc.data()['alerts'];
+                            var alertCount = '';
+                            if (doc.data()['alertCount'] !== 0) {
+                                alertCount = doc.data()['alertCount'];
+                                $('#alertsDropdown').click(function () {
+                                    $('#alert-count').html('');
+                                    userDatabase.doc(username).update({
+                                        alertCount: 0
+                                    })
+                                });
+                            }
+                            $('#alert-count').html(alertCount);
+                            var len = alerts.length > 3 ? 3 : alerts.length;
+                            alerts.reverse();
+                            for (var i = 0; i < len; i++) {
+                                var icon, message,link;
+                                switch (alerts[i]['type']) {
+                                    case "success":
+                                        icon = 'fa-check';
+                                        message = 'Congrats! Your task Approved.'
+                                        link = 'task.html?id=' + alerts[i]['taskId'];
+                                        break;
+                                    case "warning":
+                                        icon = 'fa-exclamation-triangle';
+                                        message = 'Ouch! More work needed.'
+                                        link = 'task.html?id=' + alerts[i]['taskId'];
+                                        break;
+                                    case "primary":
+                                        icon = 'fa-handshake';
+                                        message = 'Welcome to CodeRamp\'20.'
+                                        link = 'dashboard.html';
+                                        break;
+                                }
+                                $('#alerts').append('<a class="dropdown-item d-flex align-items-center" href="' + link + '"><div class="mr-3"><div class="icon-circle bg-' + alerts[i]['type'] + '"><i class="fas ' + icon + ' text-white"></i></div></div><div><div class="small text-gray-700">' + alerts[i]['timestamp'] + '</div><div class="font-weight-bold">' + message + '<br/>' + alerts[i]['task'] + '</div></div></a>')
+                            }
+                        }
+                        completed = doc.data()['completed'] || [];
+                        claimedTask = doc.data()['claimed'];
+                    }).then(function () {
+                        taskDatabase.get().then((querySnapshot) => {
+                            querySnapshot.forEach((doc) => {
+                                if (completed.indexOf(doc.id) == -1) {
+                                    var claimed = false;
+                                    if (claimedTask == doc.id) {
+                                        claimed = true;
+                                    }
+                                    addTask(doc.data()['title'], doc.data()['content'], doc.data()['type'], doc.data()['tags'], doc.data()['id'], doc.data()['level'], claimed);
+                                }
+                            });
+                            var options = {
+                                valueNames: ['card-title', 'tags', 'id'],
+                                page: 4,
+                                pagination: true
+                            };
+
+                            var taskList = new List('content', options);
+
+                            if (searchText) {
+                                $('.search').simulate("key-sequence", { sequence: searchText, delay: 150 });
+                            }
+                        });
+                    });
+                } else {
+                    taskDatabase.get().then((querySnapshot) => {
+                        querySnapshot.forEach((doc) => {
+                            var claimed = false;
+                            addTask(doc.data()['title'], doc.data()['content'], doc.data()['type'], doc.data()['tags'], doc.data()['id'], doc.data()['level'], claimed);
+                        });
+                        var options = {
+                            valueNames: ['card-title', 'tags', 'id'],
+                            page: 4,
+                            pagination: true
+                        };
+                        var taskList = new List('content', options);
+                    });
+                }
+
+
+            });
+            function addTask(title, content, type, tagsData, id, level, claimed) {
+                var tags = '';
+                for (var i = 0; i < tagsData.length; i++) {
+                    tags += '<span class="badge badge-info">' + tagsData[i] + '</span>\n';
+                }
+                var style, level;
+                switch (level) {
+                    case "1":
+                        style = "primary";
+                        level = "Beginner";
+                        break;
+                    case "2":
+                        style = "warning";
+                        level = "Intermediate";
+                        break;
+                    case "3":
+                        style = "danger";
+                        level = "Advanced"
+                        break;
+                }
+                if (claimed) {
+                    $("#task-list").append('<li class="card text-white bg-dark mt-2"><div class="id" style="display:none;">' + id + '</div><div class="ribbon">Claimed</div><div class="card-body"><div class="row"><div class="col-sm-10"><h5 class="card-title text-gray-200">' + title + ' <span class="badge badge-pill badge-' + style + '">' + level + '</span></h5><h5><div class="tags grey">' + tags + '</div></h5></div><div class="col-sm-2"><a href="task.html?id=' + id + '" class="btn btn-primary task-link-btn">View Info</a></div></div></div></li>');
+                } else {
+                    $("#task-list").append('<li class="card text-white bg-dark mt-2"><div class="id" style="display:none;">' + id + '</div><div class="card-body"><div class="row"><div class="col-sm-10"><h5 class="card-title text-gray-200">' + title + ' <span class="badge badge-pill badge-' + style + '">' + level + '</span></h5><h5><div class="tags grey">' + tags + '</div></h5></div><div class="col-sm-2"><a href="task.html?id=' + id + '" class="btn btn-primary task-link-btn">View Info</a></div></div></div></li>');
+                }
+            }
+        </script>
+
+        <!-- Custom scripts for all pages-->
+        <script src="js/dashboard.js"></script>
+        <script src="js/pagination.js"></script>
+</body>
+
+</html>

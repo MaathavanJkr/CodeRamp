@@ -1,0 +1,25 @@
+.navbar {
+	background-color: transparent;
+}
+.navbar li a,
+.navbar .navbar-brand {
+	color: #dddddd !important;
+	font-size: large;
+}
+
+.navbar-nav li a:hover,
+.navbar-nav li.active a,
+.navbar-toggler {
+	color: #ffffff !important;
+}
+
+.navbar-brand {
+	font-size: 20px !important;
+}
+
+.card-img-top {
+	height: 200px;
+}
+.badge-info {
+	color: #eeeeee;
+}
