@@ -63,10 +63,12 @@
 
 	<!-- Optional JavaScript -->
 	<script type="text/javascript">
+		$(document).ready(function() {
 		var userDatabase = firebase.firestore().collection('users');
 		var taskDatabase = firebase.firestore().collection('tasks');
 		$('input').click(function () {
     		$('#alert-box').hide();
+		});
 		});
 		function validateEmail(email) {
 			const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -139,10 +141,6 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
 		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 		crossorigin="anonymous"></script>
-
-
-
-
 
 </body>
 
