@@ -38,26 +38,26 @@
         <div class="collapse navbar-collapse" id="navbarToggler">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0 ml-lg-2">
                 <li class="nav-item active">
-                    <a class="nav-link" href="index">Home</a>
+                    <a class="nav-link" href="index.html">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="about">About</a>
+                    <a class="nav-link" href="about.html">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contact">Contact Us</a>
+                    <a class="nav-link" href="contact.html">Contact Us</a>
                 </li>
             </ul>
             <ul class="navbar-nav mt-2 mt-lg-0 mx-md-2">
                 <li class="nav-item">
-                    <a class="nav-link" href="tasks">Tasks</a>
+                    <a class="nav-link" href="tasks.html">Tasks</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="dashboard">Dashboard</a>
+                    <a class="nav-link" href="dashboard.html">Dashboard</a>
                 </li>
             </ul>
             <form id="login-btn-section" class="form-inline my-2 my-lg-0" style="display: none;">
-                <a href="login" class="btn btn-outline-primary my-2 my-sm-0 mr-2">Login</a>
-                <a href="signup" class="btn btn-primary my-2 my-sm-0">Register</a>
+                <a href="login.html" class="btn btn-outline-primary my-2 my-sm-0 mr-2">Login</a>
+                <a href="signup.html" class="btn btn-primary my-2 my-sm-0">Register</a>
             </form>
         </div>
     </nav>
@@ -86,13 +86,13 @@
                     $('#register-btn').show();
                     $('#register-btn').html('Go to Dashboard!');
                     $('#register-btn').click(function () {
-                        setTimeout(function () { location.replace('dashboard'); }, 1000)
+                        setTimeout(function () { location.replace('dashboard.html'); }, 1000)
                     });
                 } else {
                     $('#register-btn').show();
                     $('#login-btn-section').show();
                     $('#register-btn').click(function () {
-                        setTimeout(function () { location.replace('signup'); }, 1000)
+                        setTimeout(function () { location.replace('signup.html'); }, 1000)
                     });
                 }
             });
