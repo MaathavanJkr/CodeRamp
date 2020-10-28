@@ -437,14 +437,14 @@
                             adminDatabase.doc('review').get().then(function (doc) {
                                 if (doc.exists) {
                                     var requests = doc.data()['requests'];
-                                    var reqIndex = requests.findIndex(x => x.user === username);
+                                    var reqIndex = requests.findIndex(x => x.user === docUsername);
                                     if (reqIndex == -1) {
                                         $('#task-btn-section').html('<h4><span class="badge badge-info">On Progress...</span></h4><button id="review-btn" class="btn btn-warning text-light mb-2">Submit for review</button></br><button id="abandon-btn" class="btn btn-danger text-light">Abandon this Task</button>');
                                         $('#review-btn').click(function () {
                                             adminDatabase.doc('review').get().then(function (doc) {
                                                 if (doc.exists) {
                                                     var requests = doc.data()['requests'];
-                                                    requests.push({ user: username, task: taskId });
+                                                    requests.push({ user: docUsername, task: taskId });
                                                     adminDatabase.doc('review').update({
                                                         requests: requests
                                                     }).then(function () {
@@ -482,7 +482,7 @@
 
                                         $('#abandon-btn').click(function () {
                                             var requests = doc.data()['requests'];
-                                            var reqIndex = requests.findIndex(x => x.user === username);
+                                            var reqIndex = requests.findIndex(x => x.user === docUsername);
                                             requests.splice(reqIndex, 1)
                                             adminDatabase.doc('review').update({
                                                 requests: requests
