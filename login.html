@@ -26,7 +26,7 @@
 
 	<link rel="stylesheet" type="text/css" href="css/login.css">
 	<script type="text/javascript" src="js/config.js"></script>
-	
+
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
 		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -75,11 +75,11 @@
 
 	<!-- Optional JavaScript -->
 	<script type="text/javascript">
-		$(document).ready(function() {
-			var userDatabase = firebase.firestore().collection('users');
-			var taskDatabase = firebase.firestore().collection('tasks');
+		var userDatabase = firebase.firestore().collection('users');
+		var taskDatabase = firebase.firestore().collection('tasks');
+		$(document).ready(function () {
 			$('input').click(function () {
-    			$('#alert-box').hide();
+				$('#alert-box').hide();
 			});
 		});
 		function validateEmail(email) {
